@@ -5,16 +5,16 @@ This is the official code of [XNet: Wavelet-Based Low and High Frequency Merging
 
 ## Overview
 <p align="center">
-<img src="https://github.com/Yanfeng-Zhou/XNet/blob/main/figure/figure%201%20v2.png" width="100%" ></img>
+<img src="https://github.com/Yanfeng-Zhou/XNet/blob/main/figure/Architecture%20of%20XNet.png" width="100%" ></img>
 <br>Architecture of XNet.
 </p>
 <p align="center">
-<img src="https://github.com/Yanfeng-Zhou/XNet/blob/main/figure/figure%202.png" width="100%" ></img>
+<img src="https://github.com/Yanfeng-Zhou/XNet/blob/main/figure/visualize%20LF%20and%20HF%20images.png" width="100%" ></img>
 <br>Visualize dual-branch inputs. (a) Raw image. (b) Wavelet transform results. (c) Low frequency image. (d) High frequency image.
 </p>
 
 <p align="center">
-<img src="https://github.com/Yanfeng-Zhou/XNet/blob/main/figure/Figure%203%20v11.png" width="50%" ></img>
+<img src="https://github.com/Yanfeng-Zhou/XNet/blob/main/figure/Architecture%20of%20LF%20and%20HF%20fusion%20module.png" width="50%" ></img>
 <br>Architecture of LF and HF fusion module.
 </p>
 
