@@ -53,6 +53,14 @@ def get_network(network, in_channels, num_classes, **kwargs):
         net = unet_urpc(in_channels, num_classes)
     elif network == 'unet_cct':
         net = unet_cct(in_channels, num_classes)
+    elif network == 'wavesnet':
+        net = wsegnet_vgg16_bn(in_channels, num_classes)
+    elif network == 'mwcnn':
+        net = mwcnn(in_channels, num_classes)
+    elif network == 'alnet':
+        net = Aerial_LaneNet(in_channels, num_classes)
+    elif network == 'wds':
+        net = WDS(in_channels, num_classes)
 
     # 3d networks
     elif network == 'xnet3d':

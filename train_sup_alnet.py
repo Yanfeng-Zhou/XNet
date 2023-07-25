@@ -18,10 +18,10 @@ from config.dataset_config.dataset_cfg import dataset_cfg
 from config.train_test_config.train_test_config import print_train_loss_sup, print_val_loss_sup, print_train_eval_sup, print_val_eval_sup, save_val_best_sup_2d, draw_pred_sup, print_best_sup
 from config.visdom_config.visual_visdom import visdom_initialization_sup, visualization_sup, visual_image_sup
 from config.warmup_config.warmup import GradualWarmupScheduler
-from config.augmentation.online_aug import data_transform_2d, data_normalize_2d
+from config.augmentation.online_aug import data_transform_2d, data_normalize_2d, data_transform_aerial_lanenet
 from loss.loss_function import segmentation_loss
 from models.getnetwork import get_network
-from dataload.dataset_2d import imagefloder_itn
+from dataload.dataset_2d import imagefloder_aerial_lanenet
 from warnings import simplefilter
 simplefilter(action='ignore', category=FutureWarning)
 
@@ -39,25 +39,23 @@ def init_seeds(seed):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--path_trained_models', default='/mnt/data1/XNet/checkpoints/sup')
-    parser.add_argument('--path_seg_results', default='/mnt/data1/XNet/seg_pred/sup')
-    parser.add_argument('--path_dataset', default='/mnt/data1/XNet/dataset/CREMI')
+    parser.add_argument('--path_trained_models', default='/mnt/data1/GeYang_shared/XNet/checkpoints/sup')
+    parser.add_argument('--path_seg_results', default='/mnt/data1/GeYang_shared/XNet/seg_pred/sup')
+    parser.add_argument('--path_dataset', default='/mnt/data1/GeYang_shared/XNet/dataset/CREMI')
     parser.add_argument('--dataset_name', default='CREMI', help='CREMI, ISIC-2017, GlaS')
-    parser.add_argument('--input1', default='image')
-    parser.add_argument('--sup_mark', default='100')
-    parser.add_argument('-b', '--batch_size', default=4, type=int)
+    parser.add_argument('--sup_mark', default='100', help='20, 100')
+    parser.add_argument('-b', '--batch_size', default=32, type=int)
     parser.add_argument('-e', '--num_epochs', default=200, type=int)
     parser.add_argument('-s', '--step_size', default=50, type=int)
     parser.add_argument('-l', '--lr', default=0.5, type=float)
     parser.add_argument('-g', '--gamma', default=0.5, type=float)
     parser.add_argument('--loss', default='dice', type=str)
-    parser.add_argument('-ds', '--deep_supervision', default=False)
     parser.add_argument('-w', '--warm_up_duration', default=20)
     parser.add_argument('--momentum', default=0.9, type=float)
     parser.add_argument('--wd', default=-5, type=float, help='weight decay pow')
 
     parser.add_argument('-i', '--display_iter', default=5, type=int)
-    parser.add_argument('-n', '--network', default='unet', type=str)
+    parser.add_argument('-n', '--network', default='alnet', type=str)
     parser.add_argument('--local_rank', default=-1, type=int)
     parser.add_argument('--rank_index', default=0, help='0, 1, 2, 3')
     parser.add_argument('-v', '--vis', default=True, help='need visualization or not')
@@ -95,32 +93,32 @@ if __name__ == '__main__':
         visdom_env = str('Sup-'+str(os.path.split(args.path_dataset)[1])+'-'+args.network+'-l='+str(args.lr)+'-e='+str(args.num_epochs)+'-s='+str(args.step_size)+'-g='+str(args.gamma)+'-b='+str(args.batch_size)+'-w='+str(args.warm_up_duration)+'-'+str(args.sup_mark))
         visdom = visdom_initialization_sup(env=visdom_env, port=args.visdom_port)
 
-    if args.input1 == 'image':
-        input1_mean = 'MEAN'
-        input1_std = 'STD'
-    else:
-        input1_mean = 'MEAN_' + args.input1
-        input1_std = 'STD_' + args.input1
 
     # Dataset
     data_transforms = data_transform_2d()
-    data_normalize = data_normalize_2d(cfg[input1_mean], cfg[input1_std])
+    data_normalize = data_normalize_2d(cfg['MEAN'], cfg['STD'])
+    data_normalize_l1 = data_transform_aerial_lanenet(64, 64)
+    data_normalize_l2 = data_transform_aerial_lanenet(32, 32)
+    data_normalize_l3 = data_transform_aerial_lanenet(16, 16)
+    data_normalize_l4 = data_transform_aerial_lanenet(8, 8)
 
-    dataset_train = imagefloder_itn(
+    dataset_train = imagefloder_aerial_lanenet(
         data_dir=args.path_dataset + '/train_sup_' + args.sup_mark,
-        input1=args.input1,
-        data_transform_1=data_transforms['train'],
-        data_normalize_1=data_normalize,
-        sup=True,
-        num_images=None,
+        data_transform=data_transforms['train'],
+        data_normalize=data_normalize,
+        data_normalize_l1=data_normalize_l1,
+        data_normalize_l2=data_normalize_l2,
+        data_normalize_l3=data_normalize_l3,
+        data_normalize_l4=data_normalize_l4
     )
-    dataset_val = imagefloder_itn(
+    dataset_val = imagefloder_aerial_lanenet(
         data_dir=args.path_dataset + '/val',
-        input1=args.input1,
-        data_transform_1=data_transforms['val'],
-        data_normalize_1=data_normalize,
-        sup=True,
-        num_images=None,
+        data_transform=data_transforms['val'],
+        data_normalize=data_normalize,
+        data_normalize_l1=data_normalize_l1,
+        data_normalize_l2=data_normalize_l2,
+        data_normalize_l3=data_normalize_l3,
+        data_normalize_l4=data_normalize_l4
     )
 
     train_sampler = torch.utils.data.distributed.DistributedSampler(dataset_train, shuffle=True)
@@ -165,21 +163,17 @@ if __name__ == '__main__':
         for i, data in enumerate(dataloaders['train']):
 
             inputs_train = Variable(data['image'].cuda())
+            inputs_train_l1 = Variable(data['image_l1'].cuda())
+            inputs_train_l2 = Variable(data['image_l2'].cuda())
+            inputs_train_l3 = Variable(data['image_l3'].cuda())
+            inputs_train_l4 = Variable(data['image_l4'].cuda())
             mask_train = Variable(data['mask'].cuda())
 
             optimizer.zero_grad()
-            outputs_train = model(inputs_train)
+            outputs_train = model(inputs_train, inputs_train_l1, inputs_train_l2, inputs_train_l3, inputs_train_l4)
             torch.cuda.empty_cache()
 
-            if args.deep_supervision:
-                loss_train = 0
-                for output_train in outputs_train:
-                    loss_train += criterion(output_train, mask_train)
-                loss_train /= len(outputs_train)
-                outputs_train = outputs_train[0]
-            else:
-                loss_train = criterion(outputs_train, mask_train)
-
+            loss_train = criterion(outputs_train, mask_train)
             loss_train.backward()
             optimizer.step()
             train_loss += loss_train.item()
@@ -188,8 +182,8 @@ if __name__ == '__main__':
                 if i == 0:
                     score_list_train = outputs_train
                     mask_list_train = mask_train
-                # else:
-                elif 0 < i <= num_batches['train_sup'] / 4:
+                else:
+                # elif 0 < i <= num_batches['train_sup'] / 16:
                     score_list_train = torch.cat((score_list_train, outputs_train), dim=0)
                     mask_list_train = torch.cat((mask_list_train, mask_train), dim=0)
 
@@ -222,21 +216,18 @@ if __name__ == '__main__':
                     # if 0 <= i <= num_batches['val']:
 
                     inputs_val = Variable(data['image'].cuda())
+                    inputs_val_l1 = Variable(data['image_l1'].cuda())
+                    inputs_val_l2 = Variable(data['image_l2'].cuda())
+                    inputs_val_l3 = Variable(data['image_l3'].cuda())
+                    inputs_val_l4 = Variable(data['image_l4'].cuda())
                     mask_val = Variable(data['mask'].cuda())
                     name_val = data['ID']
 
                     optimizer.zero_grad()
-                    outputs_val = model(inputs_val)
+                    outputs_val = model(inputs_val, inputs_val_l1, inputs_val_l2, inputs_val_l3, inputs_val_l4)
                     torch.cuda.empty_cache()
 
-                    if args.deep_supervision:
-                        loss_val = 0
-                        for output_val in outputs_val:
-                            loss_val += criterion(output_val, mask_val)
-                        loss_val /= len(outputs_val)
-                        outputs_val = outputs_val[0]
-                    else:
-                        loss_val = criterion(outputs_val, mask_val)
+                    loss_val = criterion(outputs_val, mask_val)
                     val_loss += loss_val.item()
 
                     if i == 0:

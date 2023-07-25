@@ -108,7 +108,7 @@ if __name__ == '__main__':
     parser.add_argument('--pred_path', default='/mnt/data1/XNet/seg_pred/test/LiTS/best_result1_Jc_0.7677_mor')
     parser.add_argument('--mask_path', default='/mnt/data1/XNet/dataset/LiTS/val/mask')
     parser.add_argument('--if_3D', default=True)
-    parser.add_argument('--resize_shape', default=(128, 128), help='(3536, 4096), (512, 512)')
+    parser.add_argument('--resize_shape', default=(128, 128))
     parser.add_argument('--num_classes', default=3)
     args = parser.parse_args()
 

@@ -10,17 +10,22 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--image_path', default='//10.0.5.233/shared_data/XNet/dataset/LiTS/val/image')
-    parser.add_argument('--wavelet_path_H', default='//10.0.5.233/shared_data/XNet/dataset/LiTS/train_sup_100/DB2_H')
+    parser.add_argument('--L_path', default='//10.0.5.233/shared_data/XNet/dataset/LiTS/train_sup_100/L')
+    parser.add_argument('--H_path', default='//10.0.5.233/shared_data/XNet/dataset/LiTS/train_sup_100/H')
     parser.add_argument('--wavelet_type', default='db2', help='haar, db2, bior1.5, bior2.4, coif1, dmey')
 
     args = parser.parse_args()
 
-    if not os.path.exists(args.wavelet_path_H):
-        os.mkdir(args.wavelet_path_H)
+    if not os.path.exists(args.L_path):
+        os.mkdir(args.L_path)
+
+    if not os.path.exists(args.H_path):
+        os.mkdir(args.H_path)
 
     for i in os.listdir(args.image_path):
         image_path = os.path.join(args.image_path, i)
-        wavelet_path_H = os.path.join(args.wavelet_path_H, i)
+        L_path = os.path.join(args.L_path, i)
+        H_path = os.path.join(args.H_path, i)
 
         image = sitk.ReadImage(image_path)
         image_np = sitk.GetArrayFromImage(image)
@@ -36,6 +41,19 @@ if __name__ == '__main__':
         HHH = image_wave['ddd']
 
         LLL = (LLL - LLL.min()) / (LLL.max() - LLL.min()) * 255
+
+        resample_image = sitk.ResampleImageFilter()
+        resample_image.SetSize(image.GetSize())
+        resample_image.SetOutputSpacing([0.5, 0.5, 0.5])
+        resample_image.SetInterpolator(sitk.sitkLinear)
+        LLL = resample_image.Execute(LLL)
+
+        LLL.SetSpacing(image.GetSpacing())
+        LLL.SetDirection(image.GetDirection())
+        LLL.SetOrigin(image.GetOrigin())
+
+        sitk.WriteImage(LLL, L_path)
+
 
         LLH = (LLH - LLH.min()) / (LLH.max() - LLH.min()) * 255
         LHL = (LHL - LHL.min()) / (LHL.max() - LHL.min()) * 255
@@ -60,6 +78,6 @@ if __name__ == '__main__':
         merge1.SetDirection(image.GetDirection())
         merge1.SetOrigin(image.GetOrigin())
 
-        sitk.WriteImage(merge1, wavelet_path_H)
+        sitk.WriteImage(merge1, H_path)
 
 

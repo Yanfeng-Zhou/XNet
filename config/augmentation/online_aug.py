@@ -36,6 +36,13 @@ def data_normalize_2d(mean, std):
     )
     return data_normalize
 
+def data_transform_aerial_lanenet(H, W):
+    data_transforms = A.Compose([
+            A.Resize(H, W, p=1),
+            ToTensorV2()
+        ])
+    return data_transforms
+
 
 def data_transform_3d(normalization):
     data_transform = {

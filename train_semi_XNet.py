@@ -42,23 +42,14 @@ def init_seeds(seed):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--path_trained_models', default='/mnt/data1/XNet/checkpoints/semi_xnet',
-                        help='/HOME/scz0960/run/XNet/checkpoints/semi_xnet'
-                             '/mnt/data1/XNet/checkpoints/semi_xnet'
-                        )
-    parser.add_argument('--path_seg_results', default='/mnt/data1/XNet/seg_pred/semi_xnet',
-                        help='/HOME/scz0960/run/XNet/seg_pred/semi_xnet'
-                             '/mnt/data1/XNet/seg_pred/semi_xnet'
-                        )
-    parser.add_argument('-pd', '--path_dataset', default='/mnt/data1/XNet/dataset/GlaS',
-                        help='/HOME/scz0960/run/XNet/dataset/GlaS'
-                             '/mnt/data1/XNet/dataset/GlaS'
-                        )
+    parser.add_argument('--path_trained_models', default='/mnt/data1/XNet/checkpoints/semi_xnet')
+    parser.add_argument('--path_seg_results', default='/mnt/data1/XNet/seg_pred/semi_xnet')
+    parser.add_argument('-pd', '--path_dataset', default='/mnt/data1/XNet/dataset/GlaS')
     parser.add_argument('--dataset_name', default='GlaS', help='CREMI, ISIC-2017, GlaS')
-    parser.add_argument('--input1', default='image', help='image, HAAR_H, HAAR_L, HAAR_HHL, HAAR_HLL')
-    parser.add_argument('--input2', default='HAAR_HHL', help='HAAR_H, HAAR_L, HAAR_HHL, HAAR_HLL, BIOR1.5_H, BIOR2.4_H, COIF1_H, DB2_H, DMEY_H')
-    parser.add_argument('--sup_mark', default='20', help='1, 5, 10')
-    parser.add_argument('--unsup_mark', default='80', help='95, 90, 80, 50')
+    parser.add_argument('--input1', default='L')
+    parser.add_argument('--input2', default='H')
+    parser.add_argument('--sup_mark', default='20')
+    parser.add_argument('--unsup_mark', default='80')
     parser.add_argument('-b', '--batch_size', default=2, type=int)
     parser.add_argument('-e', '--num_epochs', default=200, type=int)
     parser.add_argument('-s', '--step_size', default=50, type=int)

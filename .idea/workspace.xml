@@ -1,7 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a6084e43-8a3d-4f65-bc86-b2baf8115879" name="Default Changelist" comment="" />
+    <list default="true" id="a6084e43-8a3d-4f65-bc86-b2baf8115879" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train_sup_alnet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train_sup_wds.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/augmentation/online_aug.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/augmentation/online_aug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataload/dataset_2d.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataload/dataset_2d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/figure/Figure 3 v11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/figure/figure 1 v2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/figure/figure 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/getnetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/getnetwork.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_xnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_xnet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_xnet3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_xnet3d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/eval.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/eval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/wavelet2D.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/wavelet2D.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/wavelet3D.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/wavelet3D.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_CCT.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_CCT.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_CCT_3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_CCT_3d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_CPS.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_CPS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_CPS_3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_CPS_3d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_CT.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_CT.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_CT_3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_CT_3d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_DTC.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_DTC.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_EM.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_EM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_EM_3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_EM_3d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_MT.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_MT.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_MT_3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_MT_3d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_UAMT.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_UAMT.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_UAMT_3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_UAMT_3d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_URPC.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_URPC.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_URPC_3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_URPC_3d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_XNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_XNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_semi_XNet3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_semi_XNet3d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_sup.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_sup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_sup_3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_sup_3d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_sup_ConResNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_sup_ConResNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_sup_XNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_sup_XNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_sup_XNet3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_sup_XNet3d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_sup_XNet_EM.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_sup_XNet_sb.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_sup_XNet_sb.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +57,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="2ASvhrldQmnvrIuEBF6ewe1Fctz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -188,11 +235,26 @@
       <workItem from="1666072441496" duration="745000" />
       <workItem from="1676863559005" duration="498000" />
       <workItem from="1690253128423" duration="1477000" />
+      <workItem from="1690260775935" duration="683000" />
+      <workItem from="1690263220286" duration="1342000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/XNet$wavelet_trans.coverage" NAME="wavelet_trans Coverage Results" MODIFIED="1656748230352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools/GlaS" />

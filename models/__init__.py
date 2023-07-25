@@ -10,6 +10,10 @@ from .networks_2d.resunet import res_unet
 from .networks_2d.resunet_plusplus import res_unet_plusplus
 from .networks_2d.u2net import u2net, u2net_small
 from .networks_2d.unet_3plus import unet_3plus, unet_3plus_ds, unet_3plus_ds_cgm
+from .networks_2d.wavesnet import wsegnet_vgg16_bn
+from .networks_2d.mwcnn import mwcnn
+from .networks_2d.aerial_lanenet import Aerial_LaneNet
+from .networks_2d.wds import WDS
 
 # 3d
 from .networks_3d.unet3d import unet3d, unet3d_min
