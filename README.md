@@ -36,7 +36,7 @@ Comparison with fully- and semi-supervised state-of-the-art models on LA and LiT
 ## Qualitative Comparison
 
 <p align="center">
-<img src="https://github.com/Yanfeng-Zhou/XNet/blob/main/figure/Qualitative%201%20resultsfigure%201%20v2.png" width="100%" >
+<img src="https://github.com/Yanfeng-Zhou/XNet/blob/main/figure/Qualitative%20results.png" width="100%" >
 <br>Qualitative results on GIaS, CREMI, LA and LiTS. (a) Raw images. (b) Ground truth. (c) MT. (d) Semi-supervised XNet (3D XNet). (e) UNet (3D UNet). (f) Fully-Supervised XNet (3D XNet). The orange arrows highlight the difference among of the results.
 </p>
 
@@ -88,23 +88,23 @@ We have reimplemented some 2D and 3D models in semi- and supervised semantic seg
 
 ## Requirements
 ```
-albumentations==1.2.1
+albumentations==0.5.2
 einops==0.4.1
 MedPy==0.4.0
-numpy==1.21.5
-opencv_python_headless==4.5.4.60
-Pillow==9.2.0
-PyWavelets==1.3.0
-scikit_image==0.19.3
-scikit_learn==1.1.2
-scipy==1.7.3
-SimpleITK==2.2.0
-skimage==0.0
+numpy==1.20.2
+opencv_python==4.2.0.34
+opencv_python_headless==4.5.1.48
+Pillow==8.0.0
+PyWavelets==1.1.1
+scikit_image==0.18.1
+scikit_learn==1.0.1
+scipy==1.4.1
+SimpleITK==2.1.0
 timm==0.6.7
 torch==1.8.0+cu111
-torchio==0.18.84
+torchio==0.18.53
 torchvision==0.9.0+cu111
-tqdm==4.64.0
+tqdm==4.65.0
 visdom==0.1.8.9
 ```
 
