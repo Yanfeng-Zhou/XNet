@@ -21,16 +21,16 @@ This is the official code of [XNet: Wavelet-Based Low and High Frequency Merging
 
 ## Quantitative Comparison
 
-Comparison with fully- and semi-supervised state-of-the-art models on GlaS and CREMI test set. DS indicates deep supervision. * indicates lightweight models. - indicates training failed. <font color="Red">**Red**</font> and **bold** indicate the best and second best performance.
+Comparison with fully- and semi-supervised state-of-the-art models on GlaS and CREMI test set. Semi-supervised models are based on UNet. DS indicates deep supervision. * indicates lightweight models. $\ddag$ indicates training for 1000 epochs. - indicates training failed. <font color="Red">**Red**</font> and **bold** indicate the best and second best performance.
 
 <p align="center">
-<img src="https://i.postimg.cc/zG4hpKR7/2D.png#pic_center" width="100%" >
+<img src="https://github.com/Yanfeng-Zhou/XNet/blob/main/figure/Comparison%20results%20on%20GlaS%20and%20CREMI.png" width="100%" >
 </p>
 
-Comparison with fully- and semi-supervised state-of-the-art models on LA and LiTS test set. Due to GPU memory limitations, some semi-supervised models using smaller architectures, ✝ and * indicate models are based on lightweight 3D UNet (half of channels) and VNet, respectively. - indicates training failed. <font color="Red">**Red**</font> and **bold** indicate the best and second best performance.
+Comparison with fully- and semi-supervised state-of-the-art models on LA and LiTS test set. Due to GPU memory limitations, some semi-supervised models using smaller architectures, ✝ and * indicate models are based on lightweight 3D UNet (half of channels) and VNet, respectively. $\ddag$ indicates training for 1000 epochs. - indicates training failed. <font color="Red">**Red**</font> and **bold** indicate the best and second best performance.
 
 <p align="center">
-<img src="https://i.postimg.cc/G2Xhgn5R/3D.png#pic_center" width="100%" >
+<img src="https://github.com/Yanfeng-Zhou/XNet/blob/main/figure/Comparison%20results%20on%20LA%20and%20P-CT.png" width="100%" >
 </p>
 
 ## Qualitative Comparison
