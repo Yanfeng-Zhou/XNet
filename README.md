@@ -1,7 +1,7 @@
 ﻿
 # XNet: Wavelet-Based Low and High Frequency Merging Networks for Semi- and Supervised Semantic Segmentation of Biomedical Images
 
-This is the official code of [XNet: Wavelet-Based Low and High Frequency Merging Networks for Semi- and Supervised Semantic Segmentation of Biomedical Images](https://) (ICCV 2023).
+This is the official code of [XNet: Wavelet-Based Low and High Frequency Merging Networks for Semi- and Supervised Semantic Segmentation of Biomedical Images](https://openaccess.thecvf.com/content/ICCV2023/html/Zhou_XNet_Wavelet-Based_Low_and_High_Frequency_Fusion_Networks_for_Fully-_ICCV_2023_paper.html) (ICCV 2023).
 
 ## Overview
 <p align="center">
@@ -155,5 +155,14 @@ python -m torch.distributed.launch --nproc_per_node=4 test.py
 ## Citation
 If our work is useful for your research, please cite our paper:
 ```
+@InProceedings{Zhou_2023_ICCV,
+  author = {Zhou, Yanfeng and Huang, Jiaxing and Wang, Chenlong and Song, Le and Yang, Ge}, 
+  title = {XNet: Wavelet-Based Low and High Frequency Fusion Networks for Fully- and Semi-Supervised Semantic Segmentation of Biomedical Images}, 
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)}, 
+  month = {October}, 
+  year = {2023}, 
+  pages = {21085-21096}
 ```
+
+
 
