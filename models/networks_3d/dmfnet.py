@@ -90,7 +90,7 @@ class MFunit(nn.Module):
         return x4 + shortcut
 
 class DMFUnit(nn.Module):
-    # weighred add
+    # weighted add
     def __init__(self, num_in, num_out, g=1, stride=1,norm=None,dilation=None):
         super(DMFUnit, self).__init__()
         self.weight1 = nn.Parameter(torch.ones(1))
@@ -100,7 +100,7 @@ class DMFUnit(nn.Module):
         num_mid = num_in if num_in <= num_out else num_out
 
         self.conv1x1x1_in1 = Conv3d_Block(num_in, num_in // 4, kernel_size=1, stride=1, norm=norm)
-        self.conv1x1x1_in2 = Conv3d_Block(num_in // 4,num_mid,kernel_size=1, stride=1, norm=norm)
+        self.conv1x1x1_in2 = Conv3d_Block(num_in // 4, num_mid, kernel_size=1, stride=1, norm=norm)
 
         self.conv3x3x3_m1 = nn.ModuleList()
         if dilation == None:
